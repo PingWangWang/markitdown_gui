@@ -70,7 +70,8 @@ pip install ^
   lxml==6.0.4 ^
   defusedxml==0.7.1 ^
   charset-normalizer==3.4.7 ^
-  pillow==12.2.0 ^
+  # 图像处理
+  pillow>=10.1.0,<11.0.0 ^
   "pdfminer.six==20251230" ^
   pdfplumber==0.11.9 ^
   mammoth==1.11.0 ^
@@ -94,6 +95,7 @@ py -3 build\build_exe.py
 ```
 
 > **注意**：若终端中文乱码，请先执行：
+>
 > ```powershell
 > $OutputEncoding = [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 > ```
@@ -117,9 +119,9 @@ d:\Code\markitdown_fork\
 
 ## ⚠️ 常见问题
 
-| 现象 | 原因 | 解决方法 |
-|------|------|----------|
-| `DLL load failed while importing onnxruntime_pybind11_state` | onnxruntime DLL 路径未注入 | 已由 `hook_onnxruntime.py` 自动处理，确保打包时该文件存在于 `build\` 目录 |
-| `WARNING: Failed to collect submodules for 'onnxruntime.quantization'` | 未安装 `onnx` 包 | `pip install onnx` |
-| 终端中文乱码 | PowerShell 默认 GBK 编码 | 执行 `$OutputEncoding = [Console]::OutputEncoding = [System.Text.Encoding]::UTF8` |
-| 对方电脑运行报 VCRUNTIME 错误 | 缺少 Visual C++ 运行库 | 对方安装 [Visual C++ Redistributable 2019+](https://aka.ms/vs/17/release/vc_redist.x64.exe) |
+| 现象                                                                   | 原因                       | 解决方法                                                                                    |
+| ---------------------------------------------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------- |
+| `DLL load failed while importing onnxruntime_pybind11_state`           | onnxruntime DLL 路径未注入 | 已由 `hook_onnxruntime.py` 自动处理，确保打包时该文件存在于 `build\` 目录                   |
+| `WARNING: Failed to collect submodules for 'onnxruntime.quantization'` | 未安装 `onnx` 包           | `pip install onnx`                                                                          |
+| 终端中文乱码                                                           | PowerShell 默认 GBK 编码   | 执行 `$OutputEncoding = [Console]::OutputEncoding = [System.Text.Encoding]::UTF8`           |
+| 对方电脑运行报 VCRUNTIME 错误                                          | 缺少 Visual C++ 运行库     | 对方安装 [Visual C++ Redistributable 2019+](https://aka.ms/vs/17/release/vc_redist.x64.exe) |

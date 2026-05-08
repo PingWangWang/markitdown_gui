@@ -89,12 +89,12 @@ log_info("正在清理旧的构建目录...")
 import importlib.util
 import shutil
 
-# 清理项目根目录的 build（除了 build_exe.py 和 README.md）和 dist
+# 清理项目根目录的 build（除了 build_exe.py 和 README 文件）和 dist
 build_dir = project_root / 'build'
 if build_dir.exists():
     # 只删除 build/ 目录中的 PyInstaller 临时文件，保留脚本和文档
     for item in build_dir.iterdir():
-        if item.name not in ['build_exe.py', 'README.md', 'hook_onnxruntime.py']:
+        if item.name not in ['build_exe.py', 'README.md', 'README_PACKAGING.md', 'hook_onnxruntime.py']:
             if item.is_dir():
                 try:
                     shutil.rmtree(item)
@@ -219,6 +219,11 @@ cmd = [
     '--exclude-module', 'jupyter',
     '--exclude-module', 'notebook',
     '--exclude-module', 'tkinter.test',
+    # 以下模块会导致体积大幅增加，根据需求决定是否排除
+    # '--exclude-module', 'pandas',   # 排除后不支持 XLSX/XLS
+    # '--exclude-module', 'numpy',    # pandas 的依赖
+    # '--exclude-module', 'scipy',    # 音频转录需要
+    # '--exclude-module', 'sklearn',  # 音频转录需要
     '--collect-all', 'onnxruntime',
     '--collect-all', 'magika',
     '--runtime-hook', str(project_root / 'build' / 'hook_onnxruntime.py'),
