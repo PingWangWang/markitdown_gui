@@ -16,10 +16,10 @@ import magika
 import charset_normalizer
 import codecs
 
-from ._stream_info import StreamInfo
-from ._uri_utils import parse_data_uri, file_uri_to_path
+from _stream_info import StreamInfo
+from _uri_utils import parse_data_uri, file_uri_to_path
 
-from .converters import (
+from converters import (
     PlainTextConverter,
     HtmlConverter,
     RssConverter,
@@ -42,9 +42,9 @@ from .converters import (
     CsvConverter,
 )
 
-from ._base_converter import DocumentConverter, DocumentConverterResult
+from _base_converter import DocumentConverter, DocumentConverterResult
 
-from ._exceptions import (
+from _exceptions import (
     FileConversionException,
     UnsupportedFormatException,
     FailedConversionAttempt,

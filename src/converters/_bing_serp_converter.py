@@ -5,8 +5,8 @@ from urllib.parse import parse_qs, urlparse
 from typing import Any, BinaryIO
 from bs4 import BeautifulSoup
 
-from .._base_converter import DocumentConverter, DocumentConverterResult
-from .._stream_info import StreamInfo
+from _base_converter import DocumentConverter, DocumentConverterResult
+from _stream_info import StreamInfo
 from ._markdownify import _CustomMarkdownify
 
 ACCEPTED_MIME_TYPE_PREFIXES = [

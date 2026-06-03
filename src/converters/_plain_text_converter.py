@@ -2,8 +2,8 @@ import sys
 
 from typing import BinaryIO, Any
 from charset_normalizer import from_bytes
-from .._base_converter import DocumentConverter, DocumentConverterResult
-from .._stream_info import StreamInfo
+from _base_converter import DocumentConverter, DocumentConverterResult
+from _stream_info import StreamInfo
 
 # Try loading optional (but in this case, required) dependencies
 # Save reporting of any exceptions for later

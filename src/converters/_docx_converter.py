@@ -29,11 +29,11 @@ from warnings import warn
 from typing import BinaryIO, Any, Optional
 
 from ._html_converter import HtmlConverter
-from ..converter_utils.docx.pre_process import pre_process_docx
-from ..converter_utils.image_reference import ImageReferenceCollector
-from .._base_converter import DocumentConverterResult
-from .._stream_info import StreamInfo
-from .._exceptions import MissingDependencyException, MISSING_DEPENDENCY_MESSAGE
+from converter_utils.docx.pre_process import pre_process_docx
+from converter_utils.image_reference import ImageReferenceCollector
+from _base_converter import DocumentConverterResult
+from _stream_info import StreamInfo
+from _exceptions import MissingDependencyException, MISSING_DEPENDENCY_MESSAGE
 
 # 尝试加载可选依赖（但在此情况下是必需的）
 # 保存任何异常信息供后续使用

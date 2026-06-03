@@ -2,8 +2,8 @@ from typing import BinaryIO, Any, Union
 import base64
 import mimetypes
 from ._exiftool import exiftool_metadata
-from .._base_converter import DocumentConverter, DocumentConverterResult
-from .._stream_info import StreamInfo
+from _base_converter import DocumentConverter, DocumentConverterResult
+from _stream_info import StreamInfo
 
 ACCEPTED_MIME_TYPE_PREFIXES = [
     "image/jpeg",

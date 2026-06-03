@@ -1,5 +1,5 @@
 from typing import Any, BinaryIO, Optional
-from ._stream_info import StreamInfo
+from _stream_info import StreamInfo
 
 
 class DocumentConverterResult:

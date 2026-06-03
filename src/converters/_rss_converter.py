@@ -4,8 +4,8 @@ from typing import BinaryIO, Any, Union
 from bs4 import BeautifulSoup
 
 from ._markdownify import _CustomMarkdownify
-from .._stream_info import StreamInfo
-from .._base_converter import DocumentConverter, DocumentConverterResult
+from _stream_info import StreamInfo
+from _base_converter import DocumentConverter, DocumentConverterResult
 
 PRECISE_MIME_TYPE_PREFIXES = [
     "application/rss",

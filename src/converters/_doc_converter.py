@@ -5,9 +5,9 @@ from pathlib import Path
 from typing import BinaryIO, Any
 
 from ._docx_converter import DocxConverter
-from .._base_converter import DocumentConverterResult
-from .._stream_info import StreamInfo
-from .._exceptions import MissingDependencyException, MISSING_DEPENDENCY_MESSAGE
+from _base_converter import DocumentConverterResult
+from _stream_info import StreamInfo
+from _exceptions import MissingDependencyException, MISSING_DEPENDENCY_MESSAGE
 
 # Try loading optional win32com dependency
 _dependency_exc_info = None

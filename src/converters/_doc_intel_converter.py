@@ -4,9 +4,9 @@ import os
 from typing import BinaryIO, Any, List
 from enum import Enum
 
-from .._base_converter import DocumentConverter, DocumentConverterResult
-from .._stream_info import StreamInfo
-from .._exceptions import MissingDependencyException
+from _base_converter import DocumentConverter, DocumentConverterResult
+from _stream_info import StreamInfo
+from _exceptions import MissingDependencyException
 
 # Try loading optional (but in this case, required) dependencies
 # Save reporting of any exceptions for later

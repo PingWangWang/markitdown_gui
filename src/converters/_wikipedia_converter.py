@@ -2,8 +2,8 @@ import re
 import bs4
 from typing import Any, BinaryIO
 
-from .._base_converter import DocumentConverter, DocumentConverterResult
-from .._stream_info import StreamInfo
+from _base_converter import DocumentConverter, DocumentConverterResult
+from _stream_info import StreamInfo
 from ._markdownify import _CustomMarkdownify
 
 ACCEPTED_MIME_TYPE_PREFIXES = [

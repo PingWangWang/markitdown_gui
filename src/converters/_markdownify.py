@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup, Tag
 
 from typing import Any, Optional
 from urllib.parse import quote, unquote, urlparse, urlunparse
-from ..converter_utils.image_reference import ImageReferenceCollector
+from converter_utils.image_reference import ImageReferenceCollector
 
 
 class _CustomMarkdownify(markdownify.MarkdownConverter):

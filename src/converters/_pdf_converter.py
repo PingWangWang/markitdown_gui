@@ -3,9 +3,9 @@ import io
 import re
 from typing import BinaryIO, Any
 
-from .._base_converter import DocumentConverter, DocumentConverterResult
-from .._stream_info import StreamInfo
-from .._exceptions import MissingDependencyException, MISSING_DEPENDENCY_MESSAGE
+from _base_converter import DocumentConverter, DocumentConverterResult
+from _stream_info import StreamInfo
+from _exceptions import MissingDependencyException, MISSING_DEPENDENCY_MESSAGE
 
 # Pattern for MasterFormat-style partial numbering (e.g., ".1", ".2", ".10")
 PARTIAL_NUMBERING_PATTERN = re.compile(r"^\.\d+$")

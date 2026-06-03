@@ -1,9 +1,9 @@
 from typing import BinaryIO, Any
 import json
 
-from .._base_converter import DocumentConverter, DocumentConverterResult
-from .._exceptions import FileConversionException
-from .._stream_info import StreamInfo
+from _base_converter import DocumentConverter, DocumentConverterResult
+from _exceptions import FileConversionException
+from _stream_info import StreamInfo
 
 CANDIDATE_MIME_TYPE_PREFIXES = [
     "application/json",

@@ -11,10 +11,10 @@ from operator import attrgetter
 
 from ._html_converter import HtmlConverter
 from ._llm_caption import llm_caption
-from ..converter_utils.image_reference import ImageReferenceCollector
-from .._base_converter import DocumentConverter, DocumentConverterResult
-from .._stream_info import StreamInfo
-from .._exceptions import MissingDependencyException, MISSING_DEPENDENCY_MESSAGE
+from converter_utils.image_reference import ImageReferenceCollector
+from _base_converter import DocumentConverter, DocumentConverterResult
+from _stream_info import StreamInfo
+from _exceptions import MissingDependencyException, MISSING_DEPENDENCY_MESSAGE
 
 # Try loading optional (but in this case, required) dependencies
 # Save reporting of any exceptions for later

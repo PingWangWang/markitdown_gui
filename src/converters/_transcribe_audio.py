@@ -1,7 +1,7 @@
 import io
 import sys
 from typing import BinaryIO
-from .._exceptions import MissingDependencyException
+from _exceptions import MissingDependencyException
 
 # Try loading optional (but in this case, required) dependencies
 # Save reporting of any exceptions for later

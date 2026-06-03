@@ -6,9 +6,9 @@ from xml.dom.minidom import Document
 from typing import BinaryIO, Any, Dict, List
 
 from ._html_converter import HtmlConverter
-from ..converter_utils.image_reference import ImageReferenceCollector
-from .._base_converter import DocumentConverterResult
-from .._stream_info import StreamInfo
+from converter_utils.image_reference import ImageReferenceCollector
+from _base_converter import DocumentConverterResult
+from _stream_info import StreamInfo
 
 ACCEPTED_MIME_TYPE_PREFIXES = [
     "application/epub",
