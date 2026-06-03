@@ -59,7 +59,7 @@ def safe_remove_dir(dir_path: Path, max_retries: int = 3):
 project_root = Path(__file__).parent.parent
 
 # 从 __about__.py 读取版本号
-version_file = project_root / 'packages' / 'markitdown' / 'src' / 'markitdown' / '__about__.py'
+version_file = project_root / 'src' / 'markitdown' / '__about__.py'
 app_version = "0.0.0"
 if version_file.exists():
     try:
@@ -230,9 +230,9 @@ cmd = [
     '--collect-all', 'magika',
     '--runtime-hook', str(project_root / 'build' / 'hook_onnxruntime.py'),
     '--icon', str(project_root / 'res' / 'ProductIcon.ico'),
-    '--add-data', f"{project_root / 'packages' / 'markitdown' / 'src' / 'markitdown'}{sep}markitdown",
+    '--add-data', f"{project_root / 'src' / 'markitdown'}{sep}markitdown",
     '--add-data', f"{project_root / 'res' / 'ProductIcon.ico'}{sep}res",
-    '--paths', str(project_root / 'packages' / 'markitdown' / 'src'),
+    '--paths', str(project_root / 'src'),
     '--windowed',
     str(project_root / 'gui' / 'main.py')
 ]
