@@ -33,31 +33,26 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-all = [
+# GUI 常用依赖（最小集合，支持 docx/pptx/pdf/xlsx/image/html）
+gui = [
   "python-pptx",
   "mammoth~=1.11.0",
-  "pandas",
   "openpyxl",
-  "xlrd",
   "lxml",
   "pdfminer.six>=20251230",
   "pdfplumber>=0.11.9",
-  "olefile",
-  "pydub",
-  "SpeechRecognition",
-  "youtube-transcript-api~=1.0.0",
-  "azure-ai-documentintelligence",
-  "azure-identity",
+  "python-docx",
+  "pillow",
+  "markdownify",
 ]
-pptx = ["python-pptx"]
-docx = ["mammoth~=1.11.0", "lxml"]
-xlsx = ["pandas", "openpyxl"]
-xls = ["pandas", "xlrd"]
-pdf = ["pdfminer.six>=20251230", "pdfplumber>=0.11.9"]
-outlook = ["olefile"]
-audio-transcription = ["pydub", "SpeechRecognition"]
-youtube-transcription = ["youtube-transcript-api"]
+
+# 可选、更大型的 extras（按需安装）
+xlsx-pandas = ["pandas"]
+audio = ["pydub", "SpeechRecognition"]
 az-doc-intel = ["azure-ai-documentintelligence", "azure-identity"]
+youtube-transcription = ["youtube-transcript-api"]
+
+# 备注：如果需要安装所有 extras，请在文档中说明如何组合上述选项
 
 [project.urls]
 Documentation = "https://github.com/microsoft/markitdown#readme"
