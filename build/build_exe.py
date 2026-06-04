@@ -58,10 +58,19 @@ def safe_remove_dir(dir_path: Path, max_retries: int = 3):
 # 获取项目根目录（build_exe.py 在 build/ 目录，需要向上一级）
 project_root = Path(__file__).parent.parent
 
-# 从 __about__.py 读取版本号
-version_file = project_root / 'src' / 'markitdown' / '__about__.py'
+# 从 __about__.py 读取版本号，支持源码布局中可能的多个位置
+possible_paths = [
+    project_root / 'packages' / 'markitdown' / 'src' / 'markitdown' / '__about__.py',
+    project_root / 'src' / 'markitdown' / '__about__.py',
+]
+version_file = None
+for p in possible_paths:
+    if p.exists():
+        version_file = p
+        break
+
 app_version = "0.0.0"
-if version_file.exists():
+if version_file and version_file.exists():
     try:
         with open(version_file, 'r', encoding='utf-8') as f:
             for line in f:
@@ -233,6 +242,7 @@ cmd = [
     '--add-data', f"{project_root / 'src' / 'markitdown'}{sep}markitdown",
     '--add-data', f"{project_root / 'res' / 'ProductIcon.ico'}{sep}res",
     '--paths', str(project_root / 'src'),
+    '--paths', str(project_root / 'packages' / 'markitdown' / 'src'),
     '--windowed',
     str(project_root / 'gui' / 'main.py')
 ]
