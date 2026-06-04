@@ -443,7 +443,7 @@ class MarkItDownGUI:
     def convert_file(self, file_path):
         """转换单个文件并写入输出目录"""
         try:
-            from markitdown import MarkItDown
+            from markitdown._markitdown import MarkItDown
             self.log_message("  → 初始化 MarkItDown 转换器...")
 
             stem = Path(file_path).stem

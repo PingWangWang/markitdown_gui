@@ -62,8 +62,9 @@ Source = "https://github.com/microsoft/markitdown"
 [tool.hatch.version]
 path = "src/markitdown/__about__.py"
 
-[project.scripts]
-markitdown = "markitdown.__main__:main"
+# Packaging scripts removed — project transitioned to GUI-only EXE distribution
+# [project.scripts]
+# markitdown = "markitdown.__main__:main"
 
 [tool.hatch.envs.default]
 features = ["all"]

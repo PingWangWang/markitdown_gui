@@ -161,7 +161,7 @@ cmd = [
     '--hidden-import', '_dialogs',
     '--hidden-import', '_app',
     '--hidden-import', 'markitdown.__about__',
-    '--hidden-import', 'markitdown.__main__',
+    # CLI entrypoint removed for GUI-only distribution (do not include markitdown.__main__)
     '--hidden-import', 'markitdown._base_converter',
     '--hidden-import', 'markitdown._exceptions',
     '--hidden-import', 'markitdown._markitdown',

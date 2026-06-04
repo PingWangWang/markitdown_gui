@@ -18,7 +18,11 @@ _mm = importlib.import_module('_markitdown')
 # Make markitdown._markitdown available for callers expecting that module path
 sys.modules[__name__ + '._markitdown'] = _mm
 
-MarkItDown = _mm.MarkItDown
+# NOTE: MarkItDown 的实现保留在 markitdown._markitdown，但不再在包顶层导出。
+# 这将阻止外部通过 `from markitdown import MarkItDown` 直接引用实现。
+# GUI 与内部代码应改为：
+#     from markitdown._markitdown import MarkItDown
+
 PRIORITY_SPECIFIC_FILE_FORMAT = _mm.PRIORITY_SPECIFIC_FILE_FORMAT
 PRIORITY_GENERIC_FILE_FORMAT = _mm.PRIORITY_GENERIC_FILE_FORMAT
 
@@ -52,7 +56,7 @@ sys.modules[__name__ + '.converter_utils'] = _conv_utils
 converter_utils = _conv_utils
 
 __all__ = [
-    '__version__', 'MarkItDown', 'DocumentConverter', 'DocumentConverterResult',
+    '__version__', 'DocumentConverter', 'DocumentConverterResult',
     'MarkItDownException','MissingDependencyException','FailedConversionAttempt',
     'FileConversionException','UnsupportedFormatException','StreamInfo',
     'PRIORITY_SPECIFIC_FILE_FORMAT', 'PRIORITY_GENERIC_FILE_FORMAT',

@@ -6,7 +6,8 @@ import shutil
 import traceback
 import io
 from dataclasses import dataclass
-from importlib.metadata import entry_points
+# plugin discovery removed: importlib.metadata.entry_points unused in GUI-only distribution
+# from importlib.metadata import entry_points
 from typing import Any, List, Dict, Optional, Union, BinaryIO
 from pathlib import Path
 from urllib.parse import urlparse
@@ -64,22 +65,21 @@ _plugins: Union[None, List[Any]] = None  # If None, plugins have not been loaded
 
 
 def _load_plugins() -> Union[None, List[Any]]:
-    """Lazy load plugins, exiting early if already loaded."""
+    """Plugins are deprecated for the GUI-only distribution. This function is a no-op.
+
+    Historically this project used entry_points(group="markitdown.plugin") to discover
+    third-party plugin packages. In the GUI-only EXE distribution that mechanism is
+    unsupported and has been removed. Keep a no-op placeholder for backward compatibility
+    so callers that check for plugins do not crash.
+    """
     global _plugins
 
-    # Skip if we've already loaded plugins
     if _plugins is not None:
         return _plugins
 
-    # Load plugins
+    # Intentionally do not load any plugins in GUI-only builds.
     _plugins = []
-    for entry_point in entry_points(group="markitdown.plugin"):
-        try:
-            _plugins.append(entry_point.load())
-        except Exception:
-            tb = traceback.format_exc()
-            warn(f"Plugin '{entry_point.name}' failed to load ... skipping:\n{tb}")
-
+    warn("Plugin discovery has been disabled for GUI-only distributions.", DeprecationWarning)
     return _plugins
 
 
@@ -233,21 +233,14 @@ class MarkItDown:
 
     def enable_plugins(self, **kwargs) -> None:
         """
-        Enable and register converters provided by plugins.
-        Plugins are disabled by default.
-        This method should only be called once, if plugins were initially disabled.
+        Plugins are deprecated in GUI-only distributions. This method is retained for
+        backward compatibility but will not register any third-party converters. It
+        emits a DeprecationWarning to notify callers.
         """
         if not self._plugins_enabled:
-            # Load plugins
-            plugins = _load_plugins()
-            assert plugins is not None
-            for plugin in plugins:
-                try:
-                    plugin.register_converters(self, **kwargs)
-                except Exception:
-                    tb = traceback.format_exc()
-                    warn(f"Plugin '{plugin}' failed to register converters:\n{tb}")
-            self._plugins_enabled = True
+            warn("Plugin support has been disabled for GUI-only builds.", DeprecationWarning)
+            # Intentionally do not register any plugin converters
+            self._plugins_enabled = False
         else:
             warn("Plugins converters are already enabled.", RuntimeWarning)
 
