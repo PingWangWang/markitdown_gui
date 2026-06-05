@@ -1,0 +1,26 @@
+﻿pyinstaller==6.19.0
+pyinstaller-hooks-contrib==2026.4
+markitdown==0.0.2
+magika==0.6.2
+onnxruntime==1.24.4
+onnx==1.21.0
+requests==2.33.1
+beautifulsoup4==4.14.3
+markdownify==1.2.2
+lxml==6.0.4
+defusedxml==0.7.1
+charset-normalizer==3.4.7
+pillow==12.2.0
+pdfminer.six==20251230
+pdfplumber==0.11.9
+mammoth==1.11.0
+openpyxl==3.1.5
+xlrd==2.0.2
+python-pptx==1.0.2
+pandas==2.3.3
+olefile==0.47
+pydub==0.25.1
+SpeechRecognition==3.16.0
+youtube-transcript-api==1.2.4
+# 可选：用于拖拽支持（非必须）
+tkinterdnd2
