@@ -32,21 +32,29 @@ def show_about(app):
     body.pack(fill=tk.BOTH)
 
     sections = [
+        ("支持格式", [
+            "文档：PDF、Word(DOCX/PPTX)、Excel(XLSX)、HTML、EPUB、RTF、Outlook 邮件、Jupyter Notebook",
+            "数据：CSV、JSON、XML",
+            "图片：JPEG、PNG、GIF、BMP（含 EXIF 和 OCR）",
+            "音频：WAV、MP3（含音频转录）",
+            "其他：ZIP 压缩包、RSS 订阅",
+        ]),
         ("功能", [
-            "支持 PDF、Word、Excel、PowerPoint 等格式转换为 Markdown",
-            "批量文件处理",
-            "简单易用的图形界面",
+            "批量文件转换为 Markdown",
+            "支持图片提取、嵌入或忽略",
+            "简单易用的图形界面，支持拖拽导入文件",
         ]),
         ("注意事项", [
-            "本程序为独立可执行文件，无需安装 Python 或任何依赖",
+            ".doc 旧版 Word 格式：请使用 Microsoft Word 或 LibreOffice 手动转为 .docx 后重新处理",
             "转换大文件时请耐心等待，程序不会卡死",
             "输出的 Markdown 文件保存在所选的保存位置目录中",
+            "本程序为独立可执行文件，无需安装 Python 或任何依赖",
         ]),
-        ("Markdown 转 Docx", [
-            "在线转换工具: https://markdowntoword.io/zh",
+        ("相关工具", [
+            "Markdown 转 Word: https://markdowntoword.io/zh",
         ]),
-        ("项目来源", [
-            "项目: https://github.com/microsoft/markitdown",
+        ("项目信息", [
+            "官方项目: https://github.com/microsoft/markitdown",
         ]),
     ]
 

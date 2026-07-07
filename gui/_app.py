@@ -443,16 +443,24 @@ class MarkItDownGUI:
     def convert_file(self, file_path):
         """转换单个文件并写入输出目录"""
         try:
+            stem = Path(file_path).stem
+            ext  = Path(file_path).suffix.lower()
+
+            # 检测 .doc 文件并提示用户转换为 .docx
+            if ext == '.doc':
+                self.log_message("  ✗ 暂不支持 .doc 格式")
+                self.log_message("  → 请使用 Microsoft Word 或 LibreOffice 手动转换为 .docx")
+                self.log_message("  → 转换步骤：打开 .doc 文件 → 另存为 .docx → 重新处理")
+                raise RuntimeError("不支持的格式：.doc 文件。请先转换为 .docx")
+
             from markitdown import MarkItDown
             self.log_message("  → 初始化 MarkItDown 转换器...")
 
-            stem = Path(file_path).stem
-            ext  = Path(file_path).suffix.lower()
             convert_kwargs = {}
 
             # 根据用户选择的图片处理方式，对含图片的格式传入对应参数
             mode = self.image_mode.get()
-            if ext in ('.docx', '.doc'):
+            if ext in ('.docx',):
                 if mode == 'file':
                     images_dir = Path(self.output_dir.get()) / f"{stem}_images"
                     convert_kwargs['docx_images_dir'] = str(images_dir)
