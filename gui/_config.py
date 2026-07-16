@@ -14,11 +14,13 @@ from pathlib import Path
 def _config_dir():
     """返回配置文件存放目录（跨环境兼容）"""
     if getattr(sys, 'frozen', False):
-        # PyInstaller 打包：exe 同级目录
-        base = Path(sys.executable).parent
+        # PyInstaller 打包：%APPDATA%\MarkItDownGUI
+        base = Path(os.environ.get('APPDATA', '')) / 'MarkItDownGUI'
     else:
         # 开发模式：项目根目录
         base = Path(__file__).parent.parent
+    # [修改] 确保目录存在，避免首次运行时 save_config 前目录不存在
+    base.mkdir(parents=True, exist_ok=True)
     return base
 
 
